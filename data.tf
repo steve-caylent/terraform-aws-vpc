@@ -1,5 +1,5 @@
 locals {
-  azs = slice(data.aws_availability_zones.current.names, 0, var.az_count)
+  azs = var.select_subnets_using_zone_ids ? slice(sort(data.aws_availability_zones.current.zone_ids), 0, var.az_count) : slice(data.aws_availability_zones.current.names, 0, var.az_count)
 
   # references to module.calculate_subnets output
   calculated_subnets       = module.calculate_subnets.subnets_by_type
