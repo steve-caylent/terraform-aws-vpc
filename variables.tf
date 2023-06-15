@@ -250,6 +250,12 @@ EOF
   }
 }
 
+variable "select_subnets_using_zone_ids" {
+  description = "If true, reference the zone ids instead of the zone names when creating subnets"
+  type        = bool
+  default     = false
+}    
+
 variable "tags" {
   description = "Tags to apply to all resources."
   type        = map(string)
